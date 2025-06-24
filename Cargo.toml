@@ -1,0 +1,52 @@
+[package]
+name = "file_encryption_tool"
+version = "0.1.0"
+edition = "2021"
+authors = ["ChrisSch"]
+description = "A modular, extensible file encryption tool with advanced features in Rust."
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/ChrisSch-dev/file_encryption_tool"
+categories = ["cryptography", "security", "command-line-utilities"]
+
+[dependencies]
+aes-gcm = "0.10"
+aes = "0.8"
+chacha20poly1305 = { version = "0.10", optional = true }
+rand = "0.8"
+rpassword = "7"
+pbkdf2 = "0.12"
+sha2 = "0.10"
+hmac = "0.12"
+flate2 = { version = "1.0", optional = true }
+zxcvbn = "2.1"
+indicatif = "0.17"
+config = "0.13"
+aws-config = { version = "1.1", optional = true }
+aws-sdk-s3 = { version = "1.21", optional = true }
+dropbox-sdk = { version = "0.15", optional = true }
+dirs = "5"
+log = "0.4"
+env_logger = "0.11"
+chrono = "0.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+filetime = "0.2"
+fs_extra = "1.3"
+walkdir = "2.5"
+tokio = { version = "1.38", features = ["full"] }
+egui = { version = "0.27", optional = true }
+eframe = { version = "0.27", optional = true }
+
+[dev-dependencies]
+tempfile = "3.10"
+assert_cmd = "2.0"
+predicates = "3.1"
+
+[features]
+default = []
+gui = ["egui", "eframe"]
+cloud = ["aws-sdk-s3", "aws-config", "dropbox-sdk"]
+compression = ["flate2"]
+extra-ciphers = ["chacha20poly1305"]
